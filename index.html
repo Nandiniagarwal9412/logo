@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+        img{
+            width:200px;
+            background-color: white;
+        }
+        .container{
+            font-family: 'Baloo 2', cursive;
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+            background-color:whitesmoke;
+            color:gray;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 0 4px rgba(0,0,0,0.8);
+         
+            height:100vh; */
+        }
+        input{
+            width:200px;
+            box-shadow: 0 0 4px rgba(0,0,0,0.8);
+            border:none;
+        }
+        button{
+            width:100px;
+            background-color: yellow;
+            color:black;
+            border:none;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LOGO</h1>
+        <input type="text" id="logo">
+        <button id="btn">Click</button>
+        <img src="" alt="" id="img">
+        <p id="name"></p>
+    </div>
+<script>
+
+  
+  const img=document.getElementById("img");
+  const name=document.getElementById("name");
+const logo=async()=>{
+    const  input=document.getElementById("logo").value;
+    console.log(input)
+const apiKey="aYZOHwAHzHHf5AqcZCO5Lw==82aft9nSkdQlwYA3";
+let options={
+    method:"Get",
+    headers:{ 'X-Api-Key':apiKey},
+}
+const res=await fetch(`https://api.api-ninjas.com/v1/logo?name=${input}`,options)
+const data=await res.json();
+console.log(data)
+  let image=data[0].image
+img.src=image
+name.innerText=data[0].name
+
+
+   
+
+
+}
+
+
+let   btn=document.getElementById("btn")
+  btn.addEventListener("click",logo)
+
+</script>
+</body>
+
+</html>
